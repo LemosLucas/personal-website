@@ -8,13 +8,13 @@ import solidJs from "@astrojs/solid-js";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://gianmarco.xyz/",
+  site: "https://lemosl.com.br/",
   integrations: [
     sitemap(),
     robotsTxt({
       sitemap: [
-        "https://gianmarco.xyz/sitemap-index.xml",
-        "https://gianmarco.xyz/sitemap-0.xml",
+        "https://lemosl.com.br/sitemap-index.xml",
+        "https://lemosl.com.br/sitemap-0.xml",
       ],
     }),
     solidJs(),

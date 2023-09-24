@@ -1,34 +1,35 @@
 ---
 import Card from "./Card/index.astro";
 import { LINKS } from "../lib/constants";
+import Button from "./Button.astro";
+import { Icon } from "astro-icon";
 ---
 
 <Card colSpan="md:col-span-1" rowSpan="md:row-span-2">
   <div class="h-full">
     <header class="flex items-center">
       <h1 class="text-white text-xl font-bold">
-        Let's start working together!
+       Contact Information
       </h1>
     </header>
     <address class="flex flex-col mt-4">
-      <h4 class="text-gray-500">Contact Details</h4>
-      <p>cavallogianmarco@gmail.com</p>
-      <p>Italy</p>
+      <h4 class="text-gray-500">Email</h4>
+      <p><a href="mailto:me@lemosl.com.br">me@lemosl.com.br</a></p>
     </address>
     <div class="flex flex-col mt-4 w-fit">
       <h4 class="text-gray-500">Socials</h4>
-      <ul>
+      <ul class="mt-2">
         <li>
-          <a href={LINKS.linkedin} target="_blank">Linkedin</a>
+          <a href={LINKS.linkedin} target="_blank" class="flex hover:underline underline-offset-2">
+            <Icon name="ri:linkedin-box-fill" class="h-6" />
+            <span class="px-1">LinkedIn</span>
+          </a>
         </li>
         <li>
-          <a href={LINKS.github} target="_blank">Github</a>
-        </li>
-        <li>
-          <a href={LINKS.medium} target="_blank">Medium</a>
-        </li>
-        <li>
-          <a href={LINKS.discord} target="_blank">Discord</a>
+          <a href={LINKS.github} target="_blank" class="flex hover:underline underline-offset-2">
+            <Icon name="ri:github-fill" class="h-6" />
+            <span class="px-1">Github</span>
+          </a>
         </li>
       </ul>
     </div>

@@ -34,8 +34,8 @@ import Now from "../components/Now.astro";
 </script>
 
 <Layout
-  title="Gianmarco Cavallo - Frontend Developer"
-  description="Software developer with strong focus on the user experience animations and micro interactions"
+  title="Lucas Lemos - Software Developer"
+  description="Embedded system engineer by degree, Software Developer by heart and life."
 >
   <main
     class="text-white m-auto p-2 grid gap-2 max-w-6xl overflow-hidden relative w-full sm:p-4 sm:gap-2 md:grid-cols-2 md:gap-3 md:p-6 lg:h-screen lg:grid-cols-4 lg:gap-4 lg:max-h-[800px]"
@@ -43,21 +43,23 @@ import Now from "../components/Now.astro";
     <IntroCard />
     <AboutMe />
     <ContactsCard />
-    <TimeZone />
     <Card
-      colSpan="md:col-span-1"
+      colSpan="md:col-span-2"
       rowSpan="md:row-span-1"
       title="Blog"
-      body="Currently WIP"
+      body="TODO"
     />
+    <TimeZone />
     <Now />
     <Card colSpan="md:col-span-1" rowSpan="md:row-span-1">
       <p class="text-xs">
-        © 2023 · Crafted with ♥️ using <a
+        © 2023 · Crafted with ♥️  using <a
           href="https://astro.build/"
           target="_blank"
           class="text-red-500">Astro</a
-        > by Gianmarco.
+        > by <a href="https://github.com/Ladvace/Grid-astro-portfolio"
+                class="underline underline-offset-2"
+             >Gianmarco Cavallo</a> and adapted by Lucas Lemos.
       </p>
     </Card>
   </main>
