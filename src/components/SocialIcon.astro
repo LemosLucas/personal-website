@@ -1,0 +1,20 @@
+---
+import Icon from 'astro-icon';
+
+interface Props {
+  href: string;
+  iconName: string;
+  iconText: string;
+}
+
+const {href, iconName, iconText} = Astro.props;
+---
+
+<a
+  href={href}
+  target="_blank"
+  class="flex hover:underline underline-offset-2"
+>
+  <Icon name={iconName} class="h-6" />
+  <span class="px-1">{iconText}</span>
+</a>
