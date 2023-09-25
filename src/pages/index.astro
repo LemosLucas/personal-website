@@ -38,28 +38,45 @@ import Now from "../components/Now.astro";
   description="Embedded system engineer by degree, Software Developer by heart and life."
 >
   <main
-    class="text-white m-auto p-2 grid gap-2 max-w-6xl overflow-hidden relative w-full sm:p-4 sm:gap-2 md:grid-cols-2 md:gap-3 md:p-6 lg:h-screen lg:grid-cols-4 lg:gap-4 lg:max-h-[800px]"
+    class="text-white m-auto p-2 grid gap-2 max-w-6xl overflow-hidden relative w-full sm:p-4 sm:gap-2 md:grid-cols-2 md:gap-3 md:p-6 lg:h-screen lg:grid-cols-4 lg:gap-4"
   >
-    <IntroCard />
-    <AboutMe />
-    <ContactsCard />
+    <IntroCard 
+      colSpan="md:col-span-3"
+    />
+    <AboutMe 
+      colSpan="lg:col-span-1 md:col-span-2"
+      rowSpan="md:row-span-2"
+    />
+    <ContactsCard 
+      colSpan="md:col-span-1"
+    />
     <Card
-      colSpan="md:col-span-2"
+      colSpan="md:col-span-1"
       rowSpan="md:row-span-1"
       title="Blog"
       body="TODO"
     />
-    <TimeZone />
-    <Now />
+    <TimeZone 
+      colSpan="lg:col-span-1"
+      rowSpan="md:row-span-1"
+    />
+    <Now 
+      colSpan="md:col-span-1"
+      rowSpan="md:row-span-1"
+    />
     <Card colSpan="md:col-span-1" rowSpan="md:row-span-1">
       <p class="text-xs">
         © 2023 · Crafted with ♥️  using <a
           href="https://astro.build/"
           target="_blank"
-          class="text-red-500">Astro</a
-        > by <a href="https://github.com/Ladvace/Grid-astro-portfolio"
-                class="underline underline-offset-2"
-             >Gianmarco Cavallo</a> and adapted by Lucas Lemos.
+          class="text-primary-500">Astro</a
+        > by 
+        <a href="https://github.com/Ladvace/Grid-astro-portfolio"
+            class="underline underline-offset-2"
+        >Gianmarco Cavallo</a> and adapted by 
+        <a href="https://github.com/LemosLucas/personal-website"
+            class="underline underline-offset-2 decoration-primary-500"
+        >Lucas Lemos</a>.
       </p>
     </Card>
   </main>

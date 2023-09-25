@@ -3,9 +3,12 @@ import Card from "./Card/index.astro";
 import { LINKS } from "../lib/constants";
 import Button from "./Button.astro";
 import { Icon } from "astro-icon";
+
+const {colSpan, rowSpan} = Astro.props;
 ---
 
-<Card colSpan="md:col-span-1" rowSpan="md:row-span-2">
+<Card colSpan={`${colSpan || ""}`} rowSpan={`${rowSpan || ""}`}>
+<!-- <Card colSpan="md:col-span-1" rowSpan="md:row-span-2"> -->
   <div class="h-full">
     <header class="flex items-center">
       <h1 class="text-white text-xl font-bold">
@@ -18,7 +21,7 @@ import { Icon } from "astro-icon";
     </address>
     <div class="flex flex-col mt-4 w-fit">
       <h4 class="text-gray-500">Socials</h4>
-      <ul class="mt-2">
+      <ul class="mt-1">
         <li>
           <a href={LINKS.linkedin} target="_blank" class="flex hover:underline underline-offset-2">
             <Icon name="ri:linkedin-box-fill" class="h-6" />

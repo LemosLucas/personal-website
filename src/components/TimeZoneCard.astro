@@ -1,6 +1,8 @@
 ---
 import { getCurrentTimeInItaly, formatTimeForItaly } from "../lib/helpers";
 import Card from "./Card/index.astro";
+
+const {colSpan, rowSpan} = Astro.props;
 ---
 
 <script>
@@ -16,7 +18,8 @@ import Card from "./Card/index.astro";
   setInterval(updateClock, 1000);
 </script>
 
-<Card colSpan="lg:col-span-1" rowSpan="md:row-span-1" title="Time zone">
+<Card colSpan={`${colSpan || ""}`} rowSpan={`${rowSpan || ""}`} title="Time zone">
+<!-- <Card colSpan="lg:col-span-1" rowSpan="md:row-span-1" title="Time zone"> -->
   <h4
     id="timeDisplay"
     class="text-5xl w-full h-[calc(100%-28px)] font-serif flex justify-center items-center"
