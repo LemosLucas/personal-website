@@ -1,0 +1,32 @@
+---
+import Card from "./Card/index.astro";
+import Experience from "./AllExperiences/Experience.astro";
+import { getCollection } from "astro:content";
+interface Props {
+  colSpan: string;
+  rowSpan: string;
+}
+
+const allExperiences = await getCollection("experiences");
+const currentExperience = allExperiences[0].data;
+const { colSpan, rowSpan } = Astro.props;
+---
+
+<Card
+  colSpan={`${colSpan || ""}`}
+  rowSpan={`${rowSpan || ""}`}
+  title="Experiences"
+>
+  <div class="flex flex-col justify-between h-full">
+    <div class="flex flex-col gap-2">
+      <Experience experience={currentExperience} />
+    </div>
+    <p class="text-xs font-light">
+      For more details, please check my <a
+        href="https://www.linkedin.com/in/lemoslucas/"
+        target="_blank"
+        class="text-cyan-600">LinkedIn profile</a
+      >
+    </p>
+  </div>
+</Card>
