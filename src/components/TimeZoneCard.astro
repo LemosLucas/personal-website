@@ -1,29 +1,30 @@
 ---
-import { getCurrentTimeInItaly, formatTimeForItaly } from "../lib/helpers";
+import { getCurrentTimeInBrazil, formatTimeForBrazil } from "../lib/helpers";
 import Card from "./Card/index.astro";
 
 const {colSpan, rowSpan} = Astro.props;
 ---
 
 <script>
-  import { formatTimeForItaly } from "../lib/helpers";
+  import { formatTimeForBrazil } from "../lib/helpers";
 
   function updateClock() {
     const timeDisplay = document.getElementById("timeDisplay");
     if (timeDisplay) {
-      timeDisplay.textContent = formatTimeForItaly(new Date());
+      timeDisplay.textContent = formatTimeForBrazil(new Date());
     }
   }
 
   setInterval(updateClock, 1000);
 </script>
 
-<Card colSpan={`${colSpan || ""}`} rowSpan={`${rowSpan || ""}`} title="Time zone">
-<!-- <Card colSpan="lg:col-span-1" rowSpan="md:row-span-1" title="Time zone"> -->
-  <h4
-    id="timeDisplay"
-    class="text-5xl w-full h-[calc(100%-28px)] font-serif flex justify-center items-center"
-  >
-    {formatTimeForItaly(getCurrentTimeInItaly())}
-  </h4>
+<Card colSpan={`${colSpan || ""}`} rowSpan={`${rowSpan || ""}`} title="Time zone" body="🇧🇷 Brazil (UTC-3)">
+  <div class="flex justify-center items-stretch">
+    <h4
+      id="timeDisplay"
+      class="text-4xl font-serif"
+    >
+      {formatTimeForBrazil(getCurrentTimeInBrazil())}
+    </h4>
+  </div>
 </Card>

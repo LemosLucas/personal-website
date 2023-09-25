@@ -4,7 +4,7 @@ import Card from "../components/Card/index.astro";
 import IntroCard from "../components/IntroCard.astro";
 import ContactsCard from "../components/ContactsCard.astro";
 import TimeZone from "../components/TimeZoneCard.astro";
-import AboutMe from "../components/AboutMe.astro";
+import Experiences from "../components/Experiences.astro";
 import Now from "../components/Now.astro";
 ---
 
@@ -43,26 +43,25 @@ import Now from "../components/Now.astro";
     <IntroCard 
       colSpan="md:col-span-3"
     />
-    <AboutMe 
+    <Experiences 
       colSpan="lg:col-span-1 md:col-span-2"
-      rowSpan="md:row-span-2"
+      rowSpan="md:row-span-2 lg:row-span-3"
     />
     <ContactsCard 
       colSpan="md:col-span-1"
     />
-    <Card
+    <!-- <Card
       colSpan="md:col-span-1"
       rowSpan="md:row-span-1"
       title="Blog"
       body="TODO"
-    />
+    /> -->
     <TimeZone 
-      colSpan="lg:col-span-1"
+      colSpan="lg:col-span-1 md:col-span-2"
       rowSpan="md:row-span-1"
     />
     <Now 
       colSpan="md:col-span-1"
-      rowSpan="md:row-span-1"
     />
     <Card colSpan="md:col-span-1" rowSpan="md:row-span-1">
       <p class="text-xs">
@@ -72,10 +71,12 @@ import Now from "../components/Now.astro";
           class="text-primary-500">Astro</a
         > by 
         <a href="https://github.com/Ladvace/Grid-astro-portfolio"
-            class="underline underline-offset-2"
+           target="_blank"
+           class="underline underline-offset-2"
         >Gianmarco Cavallo</a> and adapted by 
         <a href="https://github.com/LemosLucas/personal-website"
-            class="underline underline-offset-2 decoration-primary-500"
+           target="_blank"
+           class="underline underline-offset-2 decoration-primary-500"
         >Lucas Lemos</a>.
       </p>
     </Card>

@@ -1,0 +1,28 @@
+---
+import Icon from "astro-icon";
+import Card from "./Card/index.astro";
+
+const {colSpan, rowSpan} = Astro.props;
+---
+
+<!-- <Card colSpan="md:col-span-1" rowSpan="md:row-span-4" title="About me"> -->
+<Card colSpan={`${colSpan || ""}`} rowSpan={`${rowSpan || ""}`} title="Experiences">
+  <div class="flex flex-col justify-between gap-8">
+    <div class="flex flex-col gap-2">
+      <div class="flex flex-row justify-between items-end">
+        <p>Siemens</p>
+        <p class="text-[10px]">2018 - Present</p>
+      </div>
+      <ul class="text-sm font-light list-disc list-inside">
+        <li>Maintenance, bug fixing and enhancements of the database and surrounding services in a Energy Management System application</li>
+        <li>Creation of an onboarding process</li>
+        <li>Build and solidify a culture for a new team</li>
+        <li>Develop a Self Healing solution for the Distribution Grid in a "one-man band" team</li>
+      </ul>
+      <p class="text-sm font-light"><b class"font-bold">Hard Skills:</b> C/C++, SQL, Bash, JavaScript, React.js, Git, CI/CD, Software Design, Back-End Development, Relational Databases, Shell Scripting, Perl, Oracle Database, PL/SQL</p>
+      <p class="text-sm font-light"><b class"font-bold">Soft Skills:</b> Troubleshooting, Leadership, Communication, Problem Resolution, Customer Support, Technical Sales</p>
+      <p class="text-sm font-light"><b class"font-bold">Tools:</b> Gitlab, CI/CD, Vim, GNU Debugger, Oracle SQL Developer</p>
+    </div>
+    <p class="text-xs font-light">For more details, please check my <a href="https://www.linkedin.com/in/lemoslucas/" target="_blank" class="text-cyan-600">LinkedIn profile</a></p>
+  </div>
+</Card>

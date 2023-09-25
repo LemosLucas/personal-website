@@ -1,8 +1,5 @@
 ---
 import Card from "./Card/index.astro";
-import Button from "./Button.astro";
-import { LINKS } from "../lib/constants";
-import { Icon } from "astro-icon";
 
 const {colSpan, rowSpan} = Astro.props;
 ---
@@ -11,7 +8,6 @@ const {colSpan, rowSpan} = Astro.props;
   <div class="flex w-full h-full">
     <div class="flex flex-col justify-between md:max-h-[300px] gap-4">
       <div class="flex flex-col">
-        <h6 class="text-sm font-light m-0 text-gray-500">welcome</h6>
         <div class="m-0 font-light">
         <p>Hey, this is <b class="font-bold">Lucas Lemos</b>, a passionate developer that learned life is much more than coding.</p>
         <br>
@@ -24,7 +20,7 @@ const {colSpan, rowSpan} = Astro.props;
     </div>
     <img
       src="/me.png"
-      class="w-auto max-h-[300px] select-none absolute right-[-110px] bottom-[-20px] z-[-1] opacity-50 md:opacity-100 md:relative md:right-auto md:bottom-auto md:z-auto pointer-events-none"
+      class="w-auto max-h-[300px] select-none absolute right-[-110px] top-[-20px] z-[-1] opacity-30 md:opacity-100 md:relative md:right-auto md:bottom-auto md:z-auto pointer-events-none"
       alt="memoji of lucas lemos"
     />
   </div>
