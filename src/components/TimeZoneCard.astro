@@ -1,0 +1,30 @@
+---
+import { getCurrentTimeInBrazil, formatTimeForBrazil } from "../lib/helpers";
+import Card from "./Card/index.astro";
+
+const {colSpan, rowSpan} = Astro.props;
+---
+
+<script>
+  import { formatTimeForBrazil } from "../lib/helpers";
+
+  function updateClock() {
+    const timeDisplay = document.getElementById("timeDisplay");
+    if (timeDisplay) {
+      timeDisplay.textContent = formatTimeForBrazil(new Date());
+    }
+  }
+
+  setInterval(updateClock, 1000);
+</script>
+
+<Card colSpan={`${colSpan || ""}`} rowSpan={`${rowSpan || ""}`} title="Time zone" body="🇧🇷 Brazil (UTC-3)">
+  <div class="flex justify-center items-stretch">
+    <h4
+      id="timeDisplay"
+      class="text-4xl font-serif"
+    >
+      {formatTimeForBrazil(getCurrentTimeInBrazil())}
+    </h4>
+  </div>
+</Card>

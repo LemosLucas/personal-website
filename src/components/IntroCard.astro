@@ -1,0 +1,27 @@
+---
+import Card from "./Card/index.astro";
+
+const {colSpan, rowSpan} = Astro.props;
+---
+
+<Card colSpan={`${colSpan || ""}`} rowSpan={`${rowSpan || ""}`}>
+  <div class="flex w-full h-full">
+    <div class="flex flex-col justify-between md:max-h-[300px] gap-4">
+      <div class="flex flex-col">
+        <div class="m-0 font-light">
+        <p>Hey, this is <b class="font-bold">Lucas Lemos</b>, a passionate developer that learned life is much more than coding.</p>
+        <br>
+        <p>I fell in love with programming the moment I was introduced to it. Since then, I've been using Excel, Matlab, VBS, C/C++, Perl, Bash, Javascript/Typescript, Python to solve problems on different domains.</p>
+        <br>
+        <p>Coming from an Embedded System background, I used to feel like a fraud and decided to study the classics in the Computer Science world from GOF, DDD, Clean Architecture to Effective Modern C++</p>
+        <!-- <p>Last couple of years I started flirting with leadership positions by accident when my manager left and the rest of team looked at me and said "you knew it, right? We want you to be our manager". I was shocked to be even considered, but that episode opened my eyes to a new world that I hadn't rationalised yet: leadership is way more about attitude, behavior and values than it is about a job role.</p> -->
+        </div>
+      </div>
+    </div>
+    <img
+      src="/me.png"
+      class="w-auto max-h-[300px] select-none absolute right-[-110px] top-[-20px] z-[-1] opacity-30 md:opacity-100 md:relative md:right-auto md:bottom-auto md:z-auto pointer-events-none"
+      alt="memoji of lucas lemos"
+    />
+  </div>
+</Card>
