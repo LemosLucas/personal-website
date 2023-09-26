@@ -19,18 +19,26 @@ const { colSpan, rowSpan } = Astro.props;
 <style>
   .hide {
     display: none;
+    position: absolute;
   }
 
   .show {
     display: block;
+    position: static;
   }
-
   .disabled-button {
     opacity: 30%;
   }
+  body {
+    --exp-min-height: 0px;
+  }
+  .min-experience-height {
+    min-height: var(--exp-min-height);
+  }
 </style>
 
-<script>
+<script>import { data } from "autoprefixer";
+
   const maxExpIndexEl: HTMLDivElement | null = document.querySelector(
     "[data-max-exp-index]"
   );
@@ -42,7 +50,8 @@ const { colSpan, rowSpan } = Astro.props;
   );
 
   const nbOfExperiences = Number(maxExpIndexEl?.dataset.maxExpIndex);
-  let currentExperienceIndex = 0;
+  let currentExperienceIndex = 0; // Used to scroll through the experiences
+  let largestExpContent = -1; // Used to determine the min-height of the Experience section when the content is getting smaller
 
   rightChveron?.addEventListener("click", () => {
     if (currentExperienceIndex + 1 >= nbOfExperiences) return;
@@ -61,6 +70,9 @@ const { colSpan, rowSpan } = Astro.props;
     // At this point, I moved to the right, so it is always possible to move to the left
     leftChveron.disabled = false;
     leftChveron.classList.remove("disabled-button");
+
+    // New element is potentially larger, check and set its size, if needed
+    updateLargestExpSection();
   });
 
   leftChveron?.addEventListener("click", () => {
@@ -78,6 +90,9 @@ const { colSpan, rowSpan } = Astro.props;
     // At this point, I moved to the left, so it is always possible to move to the righ
     rightChveron.disabled = false;
     rightChveron.classList.remove("disabled-button");
+
+    // New element is potentially larger, check and set its size, if needed
+    updateLargestExpSection();
   });
 
   function showExp(expIndex: number) {
@@ -93,12 +108,65 @@ const { colSpan, rowSpan } = Astro.props;
     currentExp.classList.add("hide");
     currentExp.classList.remove("show");
   }
+
+  /** 
+   * Calculate the max. height among all experiences
+   * so that we can have a stable card height that makes a better UX
+  
+   * Resizing the window changes the grid layout, so it is a good candidate
+   * to run the function below and guarantee we have enough room
+   * Also, I guess it's a good approach to reset the height value
+   * so we measure every experience again 
+  */
+  window.addEventListener("resize", () => {
+    resetExpSectionCalculation();
+  });
+
+  window.addEventListener("DOMContentLoaded", () => {
+    resetExpSectionCalculation();
+  });
+
+  function updateLargestExpSection() {
+    // Selects the visible section to calculate its height
+    const currentExpSection: HTMLDivElement | null =
+      document.querySelector(".show[data-exp]");
+    if (!currentExpSection) return;
+
+    const height = currentExpSection.getBoundingClientRect().height;
+    // Update largest value and CSS Custom Property
+    largestExpContent = height > largestExpContent ? height : largestExpContent;
+    document.body.style.setProperty(
+      "--exp-min-height",
+      `${largestExpContent.toString()}px`
+    );
+  }
+
+   /** 
+   * Calculate the max. height among all experiences
+   * so that we can have a stable card height that makes a better UX
+  
+   * Resizing the window changes the grid layout, so it is a good candidate
+   * to run the function below and guarantee we have enough room
+   * Also, I guess it's a good approach to reset the height value
+   * so we measure every experience again 
+  */
+  function resetExpSectionCalculation() {
+   // Reset so measurements can restart properly
+   largestExpContent = 0;
+    document.querySelectorAll("[data-exp]").forEach(dataExp => {
+      dataExp.classList.remove("min-experience-height");
+    })
+    updateLargestExpSection();
+    document.querySelectorAll("[data-exp]").forEach(dataExp => {
+      dataExp.classList.add("min-experience-height");
+    }) 
+  }
 </script>
 
 <Card
   colSpan={`${colSpan || ""}`}
   rowSpan={`${rowSpan || ""}`}
-  title="Experiences"
+  title="Professional Experience"
 >
   <div
     class="flex flex-col justify-between h-full"
@@ -108,7 +176,10 @@ const { colSpan, rowSpan } = Astro.props;
       <div class="relative">
         {
           allExperiences.map((experience, i) => (
-            <div class={`${i !== 0 ? "hide" : "show"}`} data-exp={i}>
+            <div
+              class={`${i !== 0 ? "hide" : "show"}`}
+              data-exp={i}
+            >
               <Experience experience={experience.data} />
             </div>
           ))
