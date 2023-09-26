@@ -104,17 +104,16 @@ const { colSpan, rowSpan } = Astro.props;
     class="flex flex-col justify-between h-full"
     data-max-exp-index={allExperiences.length}
   >
-    <div class="flex flex-col gap-2 relative lg:h-[80%]">
-      {
-        allExperiences.map((experience, i) => (
-          <div
-            class={`absolute inset-y-0 ${i !== 0 ? "hide" : "show"}`}
-            data-exp={i}
-          >
-            <Experience experience={experience.data} />
-          </div>
-        ))
-      }
+    <div class="flex flex-col gap-2 lg:h-[80%]">
+      <div class="relative">
+        {
+          allExperiences.map((experience, i) => (
+            <div class={`${i !== 0 ? "hide" : "show"}`} data-exp={i}>
+              <Experience experience={experience.data} />
+            </div>
+          ))
+        }
+      </div>
     </div>
     <div class="flex justify-between py-10 lg:py-0">
       <button class="left-chevron disabled-button" disabled>
