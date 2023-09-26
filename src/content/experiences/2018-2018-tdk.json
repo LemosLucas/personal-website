@@ -1,0 +1,16 @@
+{
+  "position": 3,
+  "company": "TDK InvenSense",
+  "startYear": 2018,
+  "endYear": 2018,
+  "taskList": ["Research for audio location methods in the literature and select those which are suited for the constraints we had", "Compose a Matlab model to simulate the chosen methods", "Prototype and implement on hardware to compare theoretical vs practical results", "Compose an essay with the 6-month internship results"],
+  "hardSkills": ["Signal Processing", "Software Design", "Electronics", "MATLAB"],
+  "softSkills": ["Troubleshooting", "Communication", "Prototyping", "Research & Development"],
+  "tools": ["MATLAB", "ShareLatex"],
+  "projects": [
+    {
+      "name": "Study of an echo-location method and system for device-to-device positioning",
+      "url": "https://drive.google.com/file/d/1sRVLufwPC7zGzfi-Xm7RGsq5L__S0RSc/view"
+    }
+  ]
+}

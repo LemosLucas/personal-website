@@ -8,7 +8,7 @@
   "tools": ["Gitlab", "Vim", "GNU Debugger", "Oracle SQL Developer"],
   "projects": [
     {
-      "name": "SGEM & Spectrum Power",
+      "name": "SGEM & SP7",
       "url": "https://www.siemens.com/global/en/products/energy/grid-software/operation/grid-control/transmission-management.html"
     }
   ]

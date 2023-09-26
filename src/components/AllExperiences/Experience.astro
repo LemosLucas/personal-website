@@ -33,15 +33,18 @@ const { experience } = Astro.props;
       </>
     )
   }
-
-<p class="text-sm font-light mt-3">
-  {
-    experience.projects && (
-      <>
-        <b class="font-bold">Projects:</b> {experience.projects.map(project => (
-          project.url ? <a class="underline underline-offset-2" href={project.url} target="_blank">{project.name}</a> : `${project.name}, `
-        ))}
-      </>
-    )
-  }
 </p>
+{
+  experience.projects && (
+    <>
+      <p class="text-sm font-light mt-3">
+        <b class="font-bold">Projects:</b>
+      </p>
+      <ul class="text-sm font-light mt-3 list-disc list-inside">
+        {experience.projects.map((project) => (
+          <li>{project.url ? (<a class="underline underline-offset-2" href={project.url} target="_blank">{project.name}</a>) : project.name}</li>
+        ))}
+      </ul>
+    </>
+  )
+}
