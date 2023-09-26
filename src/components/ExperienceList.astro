@@ -8,45 +8,65 @@ interface Props {
   rowSpan: string;
 }
 
-// Current filename convention will load the first experiences first
-// Instead, I think it's better to show the latest experiences first
-const allExperiences = (await getCollection("experiences")).reverse();
-const currentExperience = allExperiences[0].data;
+// "position" field in the JSON is used to determine the sorting order
+// It sorts in ASC order (lesser position -> greater position)
+const allExperiences = (await getCollection("experiences")).sort(
+  (expA, expB) => expA.data.position - expB.data.position
+);
 const { colSpan, rowSpan } = Astro.props;
 ---
 
-<script>
-  const currExpIndexEl = document.querySelector('[data-exp-index]');
-  const maxExpIndexEl = document.querySelector('[data-max-exp-index]');
-  const leftChveron = document.querySelector('button.left-chevron');
-  const rightChveron = document.querySelector('button.right-chevron');
+<style>
+  .hide {
+    display: none;
+    position: absolute;
+  }
 
-  rightChveron?.addEventListener("click", () => {
-    const currentIndex = Number(currExpIndexEl?.dataset?.expIndex);
-    const maxIndex = Number(maxExpIndexEl?.dataset?.maxExpIndex);
-    if ((currentIndex + 1) >= maxIndex) return;
+  .show {
+    display: block;
+    position: static;
+  }
+  .disabled-button {
+    opacity: 30%;
+  }
+  body {
+    --exp-min-height: 0px;
+  }
+  .min-experience-height {
+    min-height: var(--exp-min-height);
+  }
+</style>
 
-    // Show the next experience
-    // TODO: Figure out how to properly update the data here
-
-
-  })
-</script>
+<script src="../scripts/experience-carousel.ts"></script>
 
 <Card
   colSpan={`${colSpan || ""}`}
   rowSpan={`${rowSpan || ""}`}
-  title="Experiences"
+  title="Professional Experience"
 >
-  <div class="flex flex-col justify-between h-full" data-exp-index="0" data-max-exp-index={allExperiences.length}>
-    <div class="flex flex-col gap-2">
-      <Experience experience={currentExperience} />
+  <div
+    class="flex flex-col justify-between h-full"
+    data-max-exp-index={allExperiences.length}
+  >
+    <div class="flex flex-col gap-2 lg:h-[80%]">
+      <div class="relative">
+        {
+          allExperiences.map((experience, i) => (
+            <div
+              class={`${i !== 0 ? "hide" : "show"}`}
+              data-exp={i}
+            >
+              <Experience experience={experience.data} />
+            </div>
+          ))
+        }
+      </div>
     </div>
     <div class="flex justify-between py-10 lg:py-0">
-      <button class="left-chevron opacity-30" disabled>
+      <button class="left-chevron disabled-button" disabled>
         <Icon name="lucide:chevron-left" size="24px" />
       </button>
-      <button class="right-chevron opacity-30" disabled>
+      <button class="right-chevron">
         <Icon class="" name="lucide:chevron-right" size="24px" />
       </button>
     </div>

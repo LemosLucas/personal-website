@@ -1,0 +1,37 @@
+{
+  "position": 4,
+  "company": "GIPSA-lab",
+  "startYear": 2017,
+  "endYear": 2017,
+  "taskList": [
+    "Work on visual perception bio-inspired model to categorize natural images",
+    "Simulate different scenarios",
+    "Aggregate and interpret results"
+  ],
+  "hardSkills": [
+    "Signal Processing",
+    "Software Design",
+    "LaTeX",
+    "MATLAB",
+    "Excel"
+  ],
+  "softSkills": [
+    "Communication",
+    "Research & Development",
+    "Data Aggregation"
+  ],
+  "tools": [
+    "MATLAB",
+    "ShareLatex"
+  ],
+  "projects": [
+    {
+      "name": "Final essay, in French 🇫🇷",
+      "url": "https://drive.google.com/file/d/1Oxa180pDbllPXyrAkWLAvFeKxarccaG6/view"
+    },
+    {
+      "name": "Final presentation slides, in French 🇫🇷",
+      "url": "https://lemoslucas.github.io/gipsa/soutenance.html"
+    }
+  ]
+}

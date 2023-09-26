@@ -1,0 +1,32 @@
+{
+  "position": 5,
+  "company": "GICS",
+  "startYear": 2013,
+  "endYear": 2015,
+  "taskList": [
+    "Design an integrated circuit to harvest RFID energy",
+    "Simulate different scenarios"
+  ],
+  "hardSkills": [
+    "Signal Processing",
+    "Software Design",
+    "LaTeX",
+    "MATLAB",
+    "Excel"
+  ],
+  "softSkills": [
+    "Communication",
+    "Research & Development"
+  ],
+  "tools": [
+    "Cadence",
+    "MATLAB",
+    "ShareLatex"
+  ],
+  "projects": [
+    {
+      "name": "Final essay, on Portuguese 🇧🇷",
+      "url": "https://drive.google.com/file/d/145ZkeWT0BFrSvqJdOOgIpruy02SO5pqd/view"
+    }
+  ]
+}
