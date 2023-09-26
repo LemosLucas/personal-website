@@ -6,5 +6,11 @@
   "taskList": ["Develop a Self Healing solution for the Distribution Grid in a \"one-man band\" team", "Negotiate business requirements with stakeholders (PLM, PM)"],
   "hardSkills": ["JavaScript", "React.js", "Git", "Software Design", "Back-End Development"],
   "softSkills": ["Troubleshooting", "Leadership", "Communication", "Problem Resolution", "Technical Sales"],
-  "tools": ["Gitlab", "VSCode"]
+  "tools": ["Gitlab", "VSCode"],
+  "projects": [
+    {
+      "name": "SOG (Self-Optimizing Grid)",
+      "url": "https://siemens.com/self-optimizing-grid"
+    }
+  ]
 }

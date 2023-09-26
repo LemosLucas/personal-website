@@ -10,7 +10,11 @@ const experienceCollection = defineCollection({
     taskList: z.array(z.string()).max(5),
     hardSkills: z.array(z.string()).max(15), 
     softSkills: z.array(z.string()).max(15), 
-    tools: z.array(z.string()).optional()
+    tools: z.array(z.string()).optional(),
+    projects: z.array(z.object({
+      name: z.string(),
+      url: z.string().optional()
+    })).optional()
   })
 });
 
