@@ -15,22 +15,83 @@ const currentExperience = allExperiences[0].data;
 const { colSpan, rowSpan } = Astro.props;
 ---
 
+<style>
+  .hide {
+    display: none;
+  }
+
+  .show {
+    display: block;
+  }
+
+  .disabled-button {
+    opacity: 30%;
+  }
+</style>
+
 <script>
-  const currExpIndexEl = document.querySelector('[data-exp-index]');
-  const maxExpIndexEl = document.querySelector('[data-max-exp-index]');
-  const leftChveron = document.querySelector('button.left-chevron');
-  const rightChveron = document.querySelector('button.right-chevron');
+  const maxExpIndexEl: HTMLDivElement | null = document.querySelector(
+    "[data-max-exp-index]"
+  );
+  const leftChveron: HTMLButtonElement | null = document.querySelector(
+    "button.left-chevron"
+  );
+  const rightChveron: HTMLButtonElement | null = document.querySelector(
+    "button.right-chevron"
+  );
+
+  const nbOfExperiences = Number(maxExpIndexEl?.dataset.maxExpIndex);
+  let currentExperienceIndex = 0;
 
   rightChveron?.addEventListener("click", () => {
-    const currentIndex = Number(currExpIndexEl?.dataset?.expIndex);
-    const maxIndex = Number(maxExpIndexEl?.dataset?.maxExpIndex);
-    if ((currentIndex + 1) >= maxIndex) return;
+    if (currentExperienceIndex + 1 >= nbOfExperiences) return;
 
-    // Show the next experience
-    // TODO: Figure out how to properly update the data here
+    // Hide current exp
+    hideExp(currentExperienceIndex);
+    // Show next exp
+    showExp(++currentExperienceIndex);
 
+    // Check whether button must be disabled (no more experiences left to move forward)
+    if (currentExperienceIndex + 1 == nbOfExperiences) {
+      rightChveron.disabled = true;
+      rightChveron.classList.add("disabled-button");
+    }
 
-  })
+    // At this point, I moved to the right, so it is always possible to move to the left
+    leftChveron.disabled = false;
+    leftChveron.classList.remove("disabled-button");
+  });
+
+  leftChveron?.addEventListener("click", () => {
+    if (currentExperienceIndex - 1 < 0) return;
+    // Hide current exp
+    hideExp(currentExperienceIndex);
+    // Show next exp
+    showExp(--currentExperienceIndex);
+
+    // Check whether button must be disabled (no more experiences left to move backward)
+    if (currentExperienceIndex == 0) {
+      leftChveron.disabled = true;
+      leftChveron.classList.add("disabled-button");
+    }
+    // At this point, I moved to the left, so it is always possible to move to the righ
+    rightChveron.disabled = false;
+    rightChveron.classList.remove("disabled-button");
+  });
+
+  function showExp(expIndex: number) {
+    const nextExp = document.querySelector(`[data-exp="${expIndex}"]`);
+    if (!nextExp) return;
+    nextExp.classList.add("show");
+    nextExp.classList.remove("hide");
+  }
+
+  function hideExp(expIndex: number) {
+    const currentExp = document.querySelector(`[data-exp="${expIndex}"]`);
+    if (!currentExp) return;
+    currentExp.classList.add("hide");
+    currentExp.classList.remove("show");
+  }
 </script>
 
 <Card
@@ -38,15 +99,27 @@ const { colSpan, rowSpan } = Astro.props;
   rowSpan={`${rowSpan || ""}`}
   title="Experiences"
 >
-  <div class="flex flex-col justify-between h-full" data-exp-index="0" data-max-exp-index={allExperiences.length}>
-    <div class="flex flex-col gap-2">
-      <Experience experience={currentExperience} />
+  <div
+    class="flex flex-col justify-between h-full"
+    data-max-exp-index={allExperiences.length}
+  >
+    <div class="flex flex-col gap-2 relative lg:h-[80%]">
+      {
+        allExperiences.map((experience, i) => (
+          <div
+            class={`absolute inset-y-0 ${i !== 0 ? "hide" : "show"}`}
+            data-exp={i}
+          >
+            <Experience experience={experience.data} />
+          </div>
+        ))
+      }
     </div>
     <div class="flex justify-between py-10 lg:py-0">
-      <button class="left-chevron opacity-30" disabled>
+      <button class="left-chevron disabled-button" disabled>
         <Icon name="lucide:chevron-left" size="24px" />
       </button>
-      <button class="right-chevron opacity-30" disabled>
+      <button class="right-chevron">
         <Icon class="" name="lucide:chevron-right" size="24px" />
       </button>
     </div>

@@ -2,30 +2,30 @@
 import type { CollectionEntry } from "astro:content";
 
 interface Props {
-  experience: CollectionEntry<'experiences'>["data"] ;
+  experience: CollectionEntry<"experiences">["data"];
 }
 
 const { experience } = Astro.props;
 ---
 
-<div class="flex flex-row justify-between items-end">
+<div class="flex flex-row justify-between items-end mb-2">
   <p>{experience.company}</p>
   <p class="text-[10px]">
     {experience.startYear} - {experience.endYear ?? "Present"}
   </p>
 </div>
 <ul class="text-sm font-light list-disc list-inside">
-  {experience.taskList.map(task => <li>{task}</li>)}
+  {experience.taskList.map((task) => <li>{task}</li>)}
 </ul>
-<p class="text-sm font-light">
+<p class="text-sm font-light mt-3">
   <b class="font-bold">Hard Skills:</b>
   {experience.hardSkills.join(", ")}
 </p>
-<p class="text-sm font-light">
+<p class="text-sm font-light mt-3">
   <b class="font-bold">Soft Skills:</b>
   {experience.softSkills.join(", ")}
 </p>
-<p class="text-sm font-light">
+<p class="text-sm font-light mt-3">
   {
     experience.tools && (
       <>
