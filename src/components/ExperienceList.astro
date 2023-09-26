@@ -8,10 +8,11 @@ interface Props {
   rowSpan: string;
 }
 
-// Current filename convention will load the first experiences first
-// Instead, I think it's better to show the latest experiences first
-const allExperiences = (await getCollection("experiences")).reverse();
-const currentExperience = allExperiences[0].data;
+// "position" field in the JSON is used to determine the sorting order
+// It sorts in ASC order (lesser position -> greater position)
+const allExperiences = (await getCollection("experiences")).sort(
+  (expA, expB) => expA.data.position - expB.data.position
+);
 const { colSpan, rowSpan } = Astro.props;
 ---
 

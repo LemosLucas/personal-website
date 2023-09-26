@@ -1,4 +1,5 @@
 {
+  "position": 1,
   "company": "Siemens",
   "startYear": 2021,
   "taskList": ["Maintenance, bug fixing and enhancements of the database and surrounding services in a Energy Management System application", "Creation of an onboarding process", "Build and solidify a culture for a new team"],
