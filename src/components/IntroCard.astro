@@ -1,20 +1,132 @@
 ---
 import Card from "./Card/index.astro";
 
-const {colSpan, rowSpan} = Astro.props;
+const { colSpan, rowSpan } = Astro.props;
 ---
+
+<style>
+  .cursor {
+    display: inline-block;
+    background-color: #ccc;
+    margin-left: 0.05rem;
+    width: 2px;
+    height: 1em;
+    animation: blink 1s infinite;
+  }
+  .cursor.typing {
+    animation: none;
+  }
+
+  .ola-color {
+    color: rgba(34,197,94, 1); /* Tailwind text-green-500 */
+  }
+  .bonjour-color {
+    /* Tailwind text-blue-500 */
+    color: rgba(59, 130, 246, 1);
+  }
+  .hello-color {
+    /* Tailwind text-white */
+    color: rgb(255 255 255);
+  }
+  @keyframes blink {
+    0% {
+      background-color: #ccc;
+    }
+    49% {
+      background-color: #ccc;
+    }
+    50% {
+      background-color: transparent;
+    }
+    99% {
+      background-color: transparent;
+    }
+    100% {
+      background-color: #ccc;
+    }
+  }
+</style>
+
+<script>
+  const typedTextSpan = document.querySelector(".typed-text");
+  const cursorSpan = document.querySelector(".cursor");
+  const containerIntroMsg = document.querySelector(".container-intro-message");
+
+  const textArray = ["Hello,", "Olá,", "Bonjour,"];
+  const textArrayColors = ["hello-color", "ola-color", "bonjour-color"]; // TailwindCSS classes to match the text above
+  const typingDelay = 100;
+  const erasingDelay = 100;
+  const newTextDelay = 2000; // Delay between current and next text
+  let textArrayIndex = 0;
+  let charIndex = 0;
+
+  function type() {
+    if (charIndex < textArray[textArrayIndex].length) {
+      if (!cursorSpan?.classList.contains("typing")) {
+        cursorSpan?.classList.add("typing");
+        containerIntroMsg?.classList.add(textArrayColors[textArrayIndex]);
+      }
+      typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(type, typingDelay);
+    } else {
+      cursorSpan?.classList.remove("typing");
+      setTimeout(erase, newTextDelay);
+    }
+  }
+
+  function erase() {
+    if (charIndex > 0) {
+      if (!cursorSpan?.classList.contains("typing"))
+        cursorSpan?.classList.add("typing");
+      typedTextSpan.textContent = textArray[textArrayIndex].substring(
+        0,
+        charIndex - 1
+      );
+      charIndex--;
+      setTimeout(erase, erasingDelay);
+    } else {
+      cursorSpan?.classList.remove("typing");
+      containerIntroMsg?.classList.remove(textArrayColors[textArrayIndex]);
+      textArrayIndex++;
+      if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+      setTimeout(type, typingDelay + 1100);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // On DOM Load initiate the effect
+    if (textArray.length) setTimeout(type, newTextDelay + 250);
+  });
+</script>
 
 <Card colSpan={`${colSpan || ""}`} rowSpan={`${rowSpan || ""}`}>
   <div class="flex w-full h-full">
     <div class="flex flex-col justify-between md:max-h-[300px] gap-4">
       <div class="flex flex-col">
+        <div class="font-light text-3xl mb-4 container-intro-message">
+          <span class="typed-text"></span>
+          <span class="cursor"></span>
+        </div>
         <div class="m-0 font-light">
-        <p>Hey, this is <b class="font-bold">Lucas Lemos</b>, a passionate developer that learned life is much more than coding.</p>
-        <br>
-        <p>I fell in love with programming the moment I was introduced to it. Since then, I've been using Excel, Matlab, VBS, C/C++, Perl, Bash, Javascript/Typescript, Python to solve problems on different domains.</p>
-        <br>
-        <p>Coming from an Embedded System background, I used to feel like a fraud and decided to study the classics in the Computer Science world from GOF, DDD, Clean Architecture to Effective Modern C++</p>
-        <!-- <p>Last couple of years I started flirting with leadership positions by accident when my manager left and the rest of team looked at me and said "you knew it, right? We want you to be our manager". I was shocked to be even considered, but that episode opened my eyes to a new world that I hadn't rationalised yet: leadership is way more about attitude, behavior and values than it is about a job role.</p> -->
+          <p class="overflow-hidden">
+            I am <b class="font-bold">Lucas Lemos</b>, a passionate developer
+            that learned life is much more than coding.
+          </p>
+          <br />
+          <p>
+            I fell in love with programming the moment I was introduced to it.
+            Since then, I've been using Excel, Matlab, VBS, C/C++, Perl, Bash,
+            Javascript/Typescript, Python to solve problems on different
+            domains.
+          </p>
+          <br />
+          <!-- <p>
+            Coming from an Embedded System background, I used to feel like a
+            fraud and decided to study the classics in the Computer Science
+            world from GOF, DDD, Clean Architecture to Effective Modern C++
+          </p> -->
+          <!-- <p>Last couple of years I started flirting with leadership positions by accident when my manager left and the rest of team looked at me and said "you knew it, right? We want you to be our manager". I was shocked to be even considered, but that episode opened my eyes to a new world that I hadn't rationalised yet: leadership is way more about attitude, behavior and values than it is about a job role.</p> -->
         </div>
       </div>
     </div>

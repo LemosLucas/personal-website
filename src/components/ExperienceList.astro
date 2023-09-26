@@ -1,0 +1,61 @@
+---
+import Card from "./Card/index.astro";
+import Experience from "./AllExperiences/Experience.astro";
+import { getCollection } from "astro:content";
+import Icon from "astro-icon";
+interface Props {
+  colSpan: string;
+  rowSpan: string;
+}
+
+// Current filename convention will load the first experiences first
+// Instead, I think it's better to show the latest experiences first
+const allExperiences = (await getCollection("experiences")).reverse();
+const currentExperience = allExperiences[0].data;
+const { colSpan, rowSpan } = Astro.props;
+---
+
+<script>
+  const currExpIndexEl = document.querySelector('[data-exp-index]');
+  const maxExpIndexEl = document.querySelector('[data-max-exp-index]');
+  const leftChveron = document.querySelector('button.left-chevron');
+  const rightChveron = document.querySelector('button.right-chevron');
+
+  rightChveron?.addEventListener("click", () => {
+    const currentIndex = Number(currExpIndexEl?.dataset?.expIndex);
+    const maxIndex = Number(maxExpIndexEl?.dataset?.maxExpIndex);
+    if ((currentIndex + 1) >= maxIndex) return;
+
+    // Show the next experience
+    // TODO: Figure out how to properly update the data here
+
+
+  })
+</script>
+
+<Card
+  colSpan={`${colSpan || ""}`}
+  rowSpan={`${rowSpan || ""}`}
+  title="Experiences"
+>
+  <div class="flex flex-col justify-between h-full" data-exp-index="0" data-max-exp-index={allExperiences.length}>
+    <div class="flex flex-col gap-2">
+      <Experience experience={currentExperience} />
+    </div>
+    <div class="flex justify-between py-10 lg:py-0">
+      <button class="left-chevron opacity-30" disabled>
+        <Icon name="lucide:chevron-left" size="24px" />
+      </button>
+      <button class="right-chevron opacity-30" disabled>
+        <Icon class="" name="lucide:chevron-right" size="24px" />
+      </button>
+    </div>
+    <p class="text-xs font-light">
+      For more details, please check my <a
+        href="https://www.linkedin.com/in/lemoslucas/"
+        target="_blank"
+        class="text-cyan-600">LinkedIn profile</a
+      >
+    </p>
+  </div>
+</Card>

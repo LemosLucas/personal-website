@@ -2,19 +2,18 @@
 import Card from "./Card/index.astro";
 import Pulse from "./Pulse.astro";
 
-const {colSpan, rowSpan} = Astro.props;
+const { colSpan, rowSpan } = Astro.props;
 ---
 
 <Card colSpan={`${colSpan || ""}`} rowSpan={`${rowSpan || ""}`}>
-<!-- <Card colSpan="md:col-span-1" rowSpan="md:row-span-1"> -->
+  <!-- <Card colSpan="md:col-span-1" rowSpan="md:row-span-1"> -->
   <div class="flex justify-between w-full items-start mb-2">
     <div class="flex flex-col">
       <h2>Now</h2>
-      <a href="https://sive.rs/nowff" target="_blank">
-        <h6 class="text-xs text-gray-500 cursor-pointer">what's that ?</h6>
-      </a>
     </div>
     <Pulse />
   </div>
-  <p class="text-sm">Currently working as a System Development Engineer at Siemens</p>
+  <p class="text-sm">
+    Currently working as a System Development Engineer at Siemens
+  </p>
 </Card>
