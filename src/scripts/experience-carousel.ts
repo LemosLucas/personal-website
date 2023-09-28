@@ -12,6 +12,13 @@ const nbOfExperiences = Number(maxExpIndexEl?.dataset.maxExpIndex);
 let currentExperienceIndex = 0; // Used to scroll through the experiences
 let largestExpContent = -1; // Used to determine the min-height of the Experience section when the content is getting smaller
 
+/* Used to decide if the "resize" event must be really fired or not
+Example: On Mobile Safari, scrolling up and down might hide the URL bar
+This hidding/showing effect fires the "resize" event and we don't really want to respond to that
+The intention of "resize" is to adapt the Experience Card when the width changes, which is not this case
+*/ 
+let screenWidth = document.body.getClientRects()[0].width; 
+
 rightChveron?.addEventListener("click", () => {
   if (currentExperienceIndex + 1 >= nbOfExperiences) return;
 
@@ -78,6 +85,10 @@ function hideExp(expIndex: number) {
  * so we measure every experience again 
 */
 window.addEventListener("resize", () => {
+  const newScreenWidth = document.body.getClientRects()[0].width;
+  if (newScreenWidth == screenWidth) return; 
+
+  screenWidth = newScreenWidth;
   resetExpSectionCalculation();
 });
 
@@ -87,8 +98,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 function updateLargestExpSection() {
   // Selects the visible section to calculate its height
-  const currentExpSection: HTMLDivElement | null =
-    document.querySelector(".show[data-exp]");
+  const currentExpSection: HTMLDivElement | null = document.querySelector(".show[data-exp]");
   if (!currentExpSection) return;
 
   const height = currentExpSection.getBoundingClientRect().height;
