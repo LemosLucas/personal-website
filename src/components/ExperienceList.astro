@@ -3,6 +3,8 @@ import Card from "./Card/index.astro";
 import Experience from "./AllExperiences/Experience.astro";
 import { getCollection } from "astro:content";
 import Icon from "astro-icon";
+import { RESOURCE_FILES } from '../lib/constants';
+
 interface Props {
   colSpan: string;
   rowSpan: string;
@@ -29,9 +31,6 @@ const { colSpan, rowSpan } = Astro.props;
   .disabled-button {
     opacity: 30%;
   }
-  body {
-    --exp-min-height: 0px;
-  }
   .min-experience-height {
     min-height: var(--exp-min-height);
   }
@@ -52,10 +51,7 @@ const { colSpan, rowSpan } = Astro.props;
       <div class="relative">
         {
           allExperiences.map((experience, i) => (
-            <div
-              class={`${i !== 0 ? "hide" : "show"}`}
-              data-exp={i}
-            >
+            <div class={`${i !== 0 ? "hide" : "show"}`} data-exp={i}>
               <Experience experience={experience.data} />
             </div>
           ))
@@ -67,15 +63,16 @@ const { colSpan, rowSpan } = Astro.props;
         <Icon name="lucide:chevron-left" size="24px" />
       </button>
       <button class="right-chevron">
-        <Icon class="" name="lucide:chevron-right" size="24px" />
+        <Icon name="lucide:chevron-right" size="24px" />
       </button>
     </div>
-    <p class="text-xs font-light">
+    <p class="text-sm font-light">
       For more details, please check my <a
-        href="https://www.linkedin.com/in/lemoslucas/"
+        href={RESOURCE_FILES.resume_en_us}
         target="_blank"
-        class="text-cyan-600">LinkedIn profile</a
-      >
+        download
+        class="underline underline-offset-2">full resume</a
+      >.
     </p>
   </div>
 </Card>
