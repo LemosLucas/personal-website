@@ -1,0 +1,78 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = "Lucas Lemos - Software Developer", 
+        description="Embedded system engineer by degree, Software Developer by heart and life." } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="/favicon/sitemap-index.xml" />
+    <!-- Basic OG tags for sharing your website's content on platforms like Facebook and LinkedIn -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lemosl.com.br" />
+    <meta property="og:image" content="https://lemosl.com.br/me.png" />
+    <!-- Basic Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://lemosl.com.br/me.png" />
+  </head>
+  <body class="bg-darkslate-700 md:h-screen flex justify-center items-center">
+    <slot />
+  </body>
+</html>
+
+
+<style is:global>
+  @font-face {
+    font-family: "CabinetGrotesk";
+    src: url("/fonts/CabinetGrotesk-Variable.ttf") format("truetype-variations");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    font-weight: 100 1000;
+  }
+  @font-face {
+    font-family: "Satoshi";
+    src: url("/fonts/Satoshi-Variable.ttf") format("truetype-variations");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    font-weight: 100 1000;
+  }
+
+  body {
+    margin: 0;
+    font-family: "Satoshi", sans-serif;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2 {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    font-family: "Cabinet Grotesk", sans-serif;
+  }
+
+  b {
+    font-weight: 700 !important;
+  }
+</style>

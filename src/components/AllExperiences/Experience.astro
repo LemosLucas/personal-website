@@ -1,4 +1,5 @@
 ---
+import Icon from "astro-icon";
 import type { CollectionEntry } from "astro:content";
 
 interface Props {
@@ -42,7 +43,25 @@ const { experience } = Astro.props;
       </p>
       <ul class="text-sm font-light mt-3 list-disc list-inside">
         {experience.projects.map((project) => (
-          <li>{project.url ? (<a class="underline underline-offset-2" href={project.url} target="_blank">{project.name}</a>) : project.name}</li>
+          <li>
+            {project.url ? (
+              <a
+                class="inline gap-2 underline underline-offset-2 align-start"
+                href={project.url}
+                target="_blank"
+              >
+                <span>{project.name}</span>
+                <Icon
+                  class="inline-block ml-2"
+                  name="lucide:external-link"
+                  height="1em"
+                  width="1em"
+                />
+              </a>
+            ) : (
+              project.name
+            )}
+          </li>
         ))}
       </ul>
     </>
