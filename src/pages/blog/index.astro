@@ -1,14 +1,24 @@
 ---
 import { getCollection } from "astro:content";
+import Head from '../../layouts/HeadSkeleton.astro';
+
 const blogEntries = await getCollection('posts');
 ---
-<ul>
-  {blogEntries.map(blogPostEntry => (
-    <li>
-      <a href={`/blog/${blogPostEntry.slug}`}>{blogPostEntry.data.title}</a>
-      <time datetime={blogPostEntry.data.date}>
-        {blogPostEntry.data.date}
-      </time>
-    </li>
-  ))}
-</ul>
+<Head
+  title="Blog - Lucas Lemos"
+  description="Dump of contents that I find relevant to share with the world"
+  pageType="other"
+>
+  <main>
+    <ul>
+      {blogEntries.map(blogPostEntry => (
+        <li>
+          <a href={`/blog/${blogPostEntry.slug}`}>{blogPostEntry.data.title}</a>
+          <time datetime={blogPostEntry.data.date}>
+            {blogPostEntry.data.date}
+          </time>
+        </li>
+      ))}
+    </ul>
+  </main>
+</Head>

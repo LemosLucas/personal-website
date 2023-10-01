@@ -2,10 +2,13 @@
 interface Props {
   title?: string;
   description?: string;
+  pageType?: "index" | "other";
 }
 
 const { title = "Lucas Lemos - Software Developer", 
-        description="Embedded system engineer by degree, Software Developer by heart and life." } = Astro.props;
+        description="Embedded system engineer by degree, Software Developer by heart and life.",
+        pageType="index"
+      } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -33,11 +36,10 @@ const { title = "Lucas Lemos - Software Developer",
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="https://lemosl.com.br/me.png" />
   </head>
-  <body class="bg-darkslate-700 md:h-screen flex justify-center items-center">
+  <body class=`bg-darkslate-700 text-white ${pageType === "index" ? "md:h-screen flex justify-center items-center" : ""}`>
     <slot />
   </body>
 </html>
-
 
 <style is:global>
   @font-face {
