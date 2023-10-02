@@ -20,16 +20,17 @@ const { title, body, colSpan, rowSpan, href } = Astro.props;
 >
   {
     href ? (
-      <a href={href} class="h-full w-full">
+      <>
+      <a href={href} class="hover:underline underline-offset-2">
         <Icon
           name="lucide:external-link"
           class="h-6 float-right group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform ease-in-out duration-100"
           size="18"
         />
-        <Content title={title} body={body}>
-          <slot />
-        </Content>
+        <Content title={title} body={body} />
       </a>
+      <slot />
+      </>
     ) : (
       <Content title={title} body={body}>
         <slot />

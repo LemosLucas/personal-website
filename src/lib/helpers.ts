@@ -1,7 +1,7 @@
-export function trimText(input: string, maxLength: number = 100): string {
-  if (input.length <= maxLength) return input;
-  return input.substring(0, maxLength - 3) + "...";
-}
+export const dateFormatter = new Intl.DateTimeFormat("en-US", {
+  dateStyle: "long",
+});
+
 export function getCurrentTimeInBrazil(): Date {
   // Create a date object with the current UTC time
   const now = new Date();

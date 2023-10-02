@@ -1,16 +1,13 @@
 ---
 import Head from "./HeadSkeleton.astro";
 import type { MarkdownLayoutProps } from "astro";
+import { dateFormatter } from "../lib/helpers";
 
 type Props = MarkdownLayoutProps<{
   title: string;
   description: string;
   date: string;
 }>;
-
-const dateFormatter = new Intl.DateTimeFormat("en-US", {
-  dateStyle: "long",
-});
 
 const { frontmatter } = Astro.props;
 ---
