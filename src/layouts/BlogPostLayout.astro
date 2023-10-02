@@ -7,6 +7,7 @@ type Props = MarkdownLayoutProps<{
   title: string;
   description: string;
   date: string;
+  minutesRead: string; // Comes from "remark-reading-time.mjs" plugin
 }>;
 
 const { frontmatter } = Astro.props;
@@ -24,7 +25,7 @@ const { frontmatter } = Astro.props;
       <h1 class="text-5xl font-semibold">{frontmatter.title}</h1>
       <div class="flex justify-between pt-4 text-gray-500 text-sm">
         <p>{dateFormatter.format(new Date(frontmatter.date))}</p>
-        <p>Read time: 4 min</p>
+        <p>{frontmatter.minutesRead}</p>
       </div>
     </div>
     <article class="prose prose-p:text-red-500 prose-slate prose-invert">
