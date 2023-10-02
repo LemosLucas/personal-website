@@ -24,7 +24,7 @@ const blogPostCollection = defineCollection({
     author: z.string().default("Lucas Lemos"),
     title: z.string().max(100, "Title must be less than 100 characteres."),
     description: z.string(),
-    date: z.string(),
+    date: z.date(),
     tags: z.array(z.string()),
     category: z.string(),
     image: z.string().optional()

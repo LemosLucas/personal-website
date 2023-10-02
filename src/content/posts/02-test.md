@@ -1,7 +1,7 @@
 ---
 title: Second Title test
 description: A second little description
-date: 2023/08/15
+date: 2023-08-15
 tags: 
   - Programming
   - Blablabla

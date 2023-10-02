@@ -5,10 +5,11 @@ interface Props {
   pageType?: "index" | "other";
 }
 
-const { title = "Lucas Lemos - Software Developer", 
-        description="Embedded system engineer by degree, Software Developer by heart and life.",
-        pageType="index"
-      } = Astro.props;
+const {
+  title = "Lucas Lemos - Software Developer",
+  description = "Embedded system engineer by degree, Software Developer by heart and life.",
+  pageType = "index",
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -17,9 +18,9 @@ const { title = "Lucas Lemos - Software Developer",
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -36,7 +37,9 @@ const { title = "Lucas Lemos - Software Developer",
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="https://lemosl.com.br/me.png" />
   </head>
-  <body class=`bg-darkslate-700 text-white ${pageType === "index" ? "md:h-screen flex justify-center items-center" : ""}`>
+  <body
+    class=`bg-darkslate-700 text-white ${pageType === "index" ? "md:h-screen flex justify-center items-center" : ""}`
+  >
     <slot />
   </body>
 </html>
@@ -69,12 +72,12 @@ const { title = "Lucas Lemos - Software Developer",
 
   h1,
   h2 {
-    font-size: 20px !important;
-    font-weight: 700 !important;
+    font-size: 20px;
+    font-weight: 700;
     font-family: "Cabinet Grotesk", sans-serif;
   }
 
   b {
-    font-weight: 700 !important;
+    font-weight: 700;
   }
 </style>
