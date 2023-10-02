@@ -1,24 +1,34 @@
 ---
 import { getCollection } from "astro:content";
-import Head from '../../layouts/HeadSkeleton.astro';
+import Head from "../../layouts/HeadSkeleton.astro";
+import PostEntry from "../../components/Blog/PostEntry.astro";
 
-const blogEntries = await getCollection('posts');
+const blogEntries = await getCollection("posts");
+const dateFormatter = new Intl.DateTimeFormat("en-US", {
+  dateStyle: "long",
+});
+const maxLineCharacters = 65; // number of characters I expect to fit in a page
 ---
+
 <Head
   title="Blog - Lucas Lemos"
   description="Dump of contents that I find relevant to share with the world"
   pageType="other"
 >
-  <main>
+  <main class="max-w-3xl mx-auto p-8 text-slate-200">
+    <h1 class="text-3xl font-semibold mb-8">Posts</h1>
     <ul>
-      {blogEntries.map(blogPostEntry => (
-        <li>
-          <a href={`/blog/${blogPostEntry.slug}`}>{blogPostEntry.data.title}</a>
-          <time datetime={blogPostEntry.data.date.toISOString()}>
-            {blogPostEntry.data.date.toISOString()}
-          </time>
-        </li>
-      ))}
+      {
+        blogEntries.map((blogPostEntry) => (
+          <li>
+            <PostEntry
+              title={blogPostEntry.data.title}
+              date={blogPostEntry.data.date}
+              url={blogPostEntry.slug}
+            />
+          </li>
+        ))
+      }
     </ul>
   </main>
 </Head>

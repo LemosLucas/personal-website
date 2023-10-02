@@ -1,0 +1,35 @@
+---
+const dateFormatter = new Intl.DateTimeFormat("en-US", {
+  dateStyle: "long",
+});
+
+interface Props {
+  title: string;
+  date: Date;
+  url: string;
+}
+
+const { title, date, url } = Astro.props;
+---
+
+<!-- Technique used to generate the proper TOC is displayed below
+Link: https://css-tricks.com/a-perfect-table-of-contents-with-html-css/
+-->
+<a
+  class="text-sm md:text-base decoration-none grid grid-cols-[auto_max-content] align-end"
+  href={`/blog/${url}`}
+>
+  <span class="relative overflow-hidden">
+    <span
+      class="inline-block max-w-[20ch] sm:max-w-full overflow-hidden text-ellipsis whitespace-nowrap"
+      >{title}</span
+    >
+    <span
+      class="text-dark-300 after:text-right after:absolute after:ps-[0.25ch] after:content-['...................................................................................................................................................']"
+    >
+    </span>
+  </span>
+  <time class="text-right tabular-nums" datetime={date.toISOString()}>
+    {dateFormatter.format(date)}
+  </time>
+</a>

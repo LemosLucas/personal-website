@@ -1,8 +1,8 @@
 ---
 layout: ../../layouts/BlogPostLayout.astro
-title: Second Title test
+title: Importance of leadership in life and in mars and very long text 
 description: A second little description
-date: 2023-08-15
+date: 2023-07-03
 tags: 
   - Programming
   - Blablabla

@@ -65,10 +65,12 @@ export default defineConfig({
     }),
     presetTypography({
       cssExtend: {
+        "p": {
+          "text-align":"justify"
+        },
         "p:first-child": {
           "text-indent": "2rem",
-          "text-align": "justify"
-        }
+        },
       }
     }),
   ],
