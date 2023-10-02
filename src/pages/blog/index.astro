@@ -3,11 +3,10 @@ import { getCollection } from "astro:content";
 import Head from "../../layouts/HeadSkeleton.astro";
 import PostEntry from "../../components/Blog/PostEntry.astro";
 
-const blogEntries = await getCollection("posts");
-const dateFormatter = new Intl.DateTimeFormat("en-US", {
-  dateStyle: "long",
-});
-const maxLineCharacters = 65; // number of characters I expect to fit in a page
+const blogEntries = (await getCollection("posts")).sort(
+  (blogEntryA, blogEntryB) =>
+    blogEntryB.data.date.getTime() - blogEntryA.data.date.getTime()
+);
 ---
 
 <Head

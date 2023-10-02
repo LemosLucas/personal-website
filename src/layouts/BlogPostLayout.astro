@@ -5,7 +5,12 @@ import type { MarkdownLayoutProps } from "astro";
 type Props = MarkdownLayoutProps<{
   title: string;
   description: string;
+  date: string;
 }>;
+
+const dateFormatter = new Intl.DateTimeFormat("en-US", {
+  dateStyle: "long",
+});
 
 const { frontmatter } = Astro.props;
 ---
@@ -21,7 +26,7 @@ const { frontmatter } = Astro.props;
     <div class="my-30">
       <h1 class="text-5xl font-semibold">{frontmatter.title}</h1>
       <div class="flex justify-between pt-4 text-gray-500 text-sm">
-        <p>August 23rd, 2023</p>
+        <p>{dateFormatter.format(new Date(frontmatter.date))}</p>
         <p>Read time: 4 min</p>
       </div>
     </div>
