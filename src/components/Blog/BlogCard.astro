@@ -17,7 +17,7 @@ const blogEntries = (await getCollection("posts"))
   href="/blog"
 >
   <article class="mt-4 block h-full">
-    <p class="text-gray-500 mb-2">Latest articles</p>
+    <p class="text-gray-500 mb-2">Latest posts</p>
     {blogEntries.map(blogEntry => (
       <PostEntry
         title={blogEntry.data.title}

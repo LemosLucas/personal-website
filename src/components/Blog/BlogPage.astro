@@ -10,7 +10,9 @@ const { posts } = Astro.props;
 ---
 
 <>
-  <h1 class="text-3xl font-semibold mb-8">Posts</h1>
+  <a class="hover:underline hover:underline-wavy" href="/blog">
+    <h1 class="text-3xl font-semibold mb-8">Posts</h1>
+  </a>
   <ul>
     {
       posts.map((post) => (
