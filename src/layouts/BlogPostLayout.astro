@@ -1,7 +1,7 @@
 ---
 import Head from "./HeadSkeleton.astro";
 import type { MarkdownLayoutProps } from "astro";
-import { dateFormatter } from "../lib/helpers";
+import { longDateFormatter } from "../lib/helpers";
 
 type Props = MarkdownLayoutProps<{
   title: string;
@@ -24,7 +24,7 @@ const { frontmatter } = Astro.props;
     <div class="my-30">
       <h1 class="text-5xl font-semibold">{frontmatter.title}</h1>
       <div class="flex justify-between pt-4 text-gray-500 text-sm">
-        <p>{dateFormatter.format(new Date(frontmatter.date))}</p>
+        <p>{longDateFormatter.format(new Date(frontmatter.date))}</p>
         <p>{frontmatter.minutesRead}</p>
       </div>
     </div>
