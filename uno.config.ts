@@ -1,5 +1,5 @@
 // uno.config.ts
-import { defineConfig, presetUno, presetWebFonts } from "unocss";
+import { defineConfig, presetUno, presetTypography, presetWebFonts } from "unocss";
 
 export default defineConfig({
   theme: {
@@ -62,6 +62,16 @@ export default defineConfig({
         sans: ["Cabinet Grotesk", "Satoshi"],
         serif: "Zodiak",
       },
+    }),
+    presetTypography({
+      cssExtend: {
+        "p": {
+          "text-align":"justify"
+        },
+        "p:first-child": {
+          "text-indent": "2rem",
+        },
+      }
     }),
   ],
 });

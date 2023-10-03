@@ -1,0 +1,29 @@
+---
+import type { CollectionEntry } from "astro:content";
+import PostEntry from "./PostEntry.astro";
+
+interface Props {
+  posts: Array<CollectionEntry<"posts">>;
+}
+
+const { posts } = Astro.props;
+---
+
+<>
+  <a class="hover:underline hover:underline-wavy" href="/blog">
+    <h1 class="text-3xl font-semibold mb-8">Posts</h1>
+  </a>
+  <ul>
+    {
+      posts.map((post) => (
+        <li>
+          <PostEntry
+            title={post.data.title}
+            date={post.data.date}
+            url={post.slug}
+          />
+        </li>
+      ))
+    }
+  </ul>
+</>

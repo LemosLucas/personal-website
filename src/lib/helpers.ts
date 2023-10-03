@@ -1,13 +1,31 @@
-export function trimText(input: string, maxLength: number = 100): string {
-  if (input.length <= maxLength) return input;
-  return input.substring(0, maxLength - 3) + "...";
+export const longDateFormatter = new Intl.DateTimeFormat("en-US", {
+  dateStyle: "long",
+});
+
+export const mediumDateFormatter = new Intl.DateTimeFormat("en-US", {
+  dateStyle: "medium",
+});
+
+/**
+ * Return the proper dataFormatter based on the screen width
+ * My plan is to use a shorter format in small screen
+ */
+export function getDataFormatterBasedOnScreen() {
+  // 400px width seems good enough to state we are dealing with a small real state
+  if (window.screen.width <= 400) {
+    return mediumDateFormatter;
+  }
+  else {
+    return longDateFormatter;
+  }
 }
+
 export function getCurrentTimeInBrazil(): Date {
   // Create a date object with the current UTC time
   const now = new Date();
 
   // Convert the UTC time to Brazil's time
-  const offsetBrazil = -3; 
+  const offsetBrazil = -3;
   now.setHours(now.getUTCHours() + offsetBrazil);
 
   return now;

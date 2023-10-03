@@ -1,0 +1,20 @@
+---
+import { getCollection } from "astro:content";
+import Head from "../../layouts/HeadSkeleton.astro";
+import BlogPage from '../../components/Blog/BlogPage.astro';
+
+const blogEntries = (await getCollection("posts")).sort(
+  (blogEntryA, blogEntryB) =>
+    blogEntryB.data.date.getTime() - blogEntryA.data.date.getTime()
+);
+---
+
+<Head
+  title="Blog - Lucas Lemos"
+  description="Dump of contents that I find relevant to share with the world"
+  pageType="other"
+>
+  <main class="max-w-3xl mx-auto p-8 text-slate-200">
+    <BlogPage posts={blogEntries}  />
+  </main>
+</Head>

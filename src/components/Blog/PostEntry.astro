@@ -1,0 +1,37 @@
+---
+interface Props {
+  title: string;
+  date: Date;
+  url: string;
+}
+
+const { title, date, url } = Astro.props;
+---
+
+<script src="../../scripts/time-format-updater.ts"></script>
+
+<!-- Technique used to generate the proper TOC is displayed below
+Link: https://css-tricks.com/a-perfect-table-of-contents-with-html-css/
+-->
+<a
+  class="text-sm md:text-base decoration-none grid grid-cols-[auto_max-content] align-middle content-center hover:opacity-60"
+  href={`/blog/${url}`}
+>
+  <span class="relative overflow-hidden">
+    <span
+      class="inline-block max-w-[20ch] sm:max-w-full overflow-hidden text-ellipsis whitespace-nowrap"
+    >
+      {title}
+    </span>
+    <span
+      class="text-dark-300 after:absolute after:ps-[0.25ch] after:content-['...................................................................................................................................................']"
+    >
+    </span>
+  </span>
+  <time
+    class="text-right tabular-nums"
+    datetime={date.toISOString()}
+    data-date={date.toISOString()}
+  >
+  </time>
+</a>

@@ -6,6 +6,8 @@ import ContactsCard from "../components/ContactsCard.astro";
 import TimeZone from "../components/TimeZoneCard.astro";
 import ExperienceList from "../components/ExperienceList.astro";
 import Now from "../components/Now.astro";
+import Blog from "../components/Blog/BlogCard.astro";
+import Credits from "../components/Credits.astro";
 ---
 
 <script>
@@ -43,32 +45,9 @@ import Now from "../components/Now.astro";
       rowSpan="md:row-span-2 lg:row-span-3"
     />
     <ContactsCard colSpan="md:col-span-1" rowSpan="" />
-    <!-- <Card
-      colSpan="md:col-span-1"
-      rowSpan="md:row-span-1"
-      title="Blog"
-      body="TODO"
-    /> -->
+    <Blog />
     <TimeZone colSpan="lg:col-span-1 md:col-span-2" rowSpan="md:row-span-1" />
     <Now colSpan="md:col-span-1" />
-    <Card colSpan="md:col-span-1" rowSpan="md:row-span-1">
-      <p class="text-xs">
-        © 2023 · Crafted with ♥️ using <a
-          href="https://astro.build/"
-          target="_blank"
-          class="font-bold">Astro</a
-        > by
-        <a
-          href="https://github.com/Ladvace/Grid-astro-portfolio"
-          target="_blank"
-          class="underline underline-offset-2">Gianmarco Cavallo</a
-        > and adapted by
-        <a
-          href="https://github.com/LemosLucas/personal-website"
-          target="_blank"
-          class="underline underline-offset-2">Lucas Lemos</a
-        >.
-      </p>
-    </Card>
+    <Credits />
   </main>
 </OnePageLayout>

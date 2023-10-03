@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import BlogPage from "../../components/Blog/BlogPage.astro";
+
+const { slug } = Astro.params;
+
+if (slug === undefined) {
+  throw new Error("Slug is required");
+}
+const blogEntries = (await getCollection("posts")).sort(
+  (blogEntryA, blogEntryB) =>
+    blogEntryB.data.date.getTime() - blogEntryA.data.date.getTime()
+);
+
+const entry = blogEntries.find((entry) => entry.slug === slug);
+if (entry === undefined) {
+  return Astro.redirect("/404");
+}
+const { Content } = await entry.render();
+---
+
+<>
+  <Content />
+  <hr class="border-slate-200 border-dashed" />
+  <aside class="max-w-3xl mx-auto p-8 text-slate-200">
+    <BlogPage posts={blogEntries} />
+  </aside>
+</>

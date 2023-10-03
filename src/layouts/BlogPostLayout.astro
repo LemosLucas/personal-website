@@ -1,0 +1,35 @@
+---
+import Head from "./HeadSkeleton.astro";
+import type { MarkdownLayoutProps } from "astro";
+import { longDateFormatter } from "../lib/helpers";
+
+type Props = MarkdownLayoutProps<{
+  title: string;
+  description: string;
+  date: string;
+  minutesRead: string; // Comes from "remark-reading-time.mjs" plugin
+}>;
+
+const { frontmatter } = Astro.props;
+---
+
+<style></style>
+
+<Head
+  title={frontmatter.title}
+  description={frontmatter.description}
+  pageType="other"
+>
+  <main class="mx-auto max-w-[65ch] p-8">
+    <div class="my-30">
+      <h1 class="text-5xl font-semibold">{frontmatter.title}</h1>
+      <div class="flex justify-between pt-4 text-gray-500 text-sm">
+        <p>{longDateFormatter.format(new Date(frontmatter.date))}</p>
+        <p>{frontmatter.minutesRead}</p>
+      </div>
+    </div>
+    <article class="prose prose-p:text-red-500 prose-slate prose-invert">
+      <slot />
+    </article>
+  </main>
+</Head>

@@ -1,0 +1,29 @@
+---
+import Card from "../Card/index.astro";
+import { getCollection } from "astro:content";
+import PostEntry from "./PostEntry.astro";
+
+// Showing the latest 3 posts
+const blogEntries = (await getCollection("posts"))
+    .sort((blogEntryA, blogEntryB) =>
+        blogEntryB.data.date.getTime() - blogEntryA.data.date.getTime())
+    .slice(0, 3);
+---
+
+<Card
+  colSpan="md:col-span-1 lg:col-span-2"
+  rowSpan="md:row-span-1"
+  title="Blog"
+  href="/blog"
+>
+  <article class="mt-4 block h-full">
+    <p class="text-gray-500 mb-2">Latest posts</p>
+    {blogEntries.map(blogEntry => (
+      <PostEntry
+        title={blogEntry.data.title}
+        url={blogEntry.slug}
+        date={blogEntry.data.date}
+      />
+    ))}
+  </article>
+</Card>
