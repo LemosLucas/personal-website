@@ -1,9 +1,11 @@
 export const longDateFormatter = new Intl.DateTimeFormat("en-US", {
   dateStyle: "long",
+  timeZone: "UTC"
 });
 
 export const mediumDateFormatter = new Intl.DateTimeFormat("en-US", {
   dateStyle: "medium",
+  timeZone: "UTC"
 });
 
 /**
