@@ -40,7 +40,7 @@ In November 2012, I was still a freshman in the university. We had to attend a c
 
 The video below is one of those presentations. We had 1 minute to showcase an object that was meaningful to us. I remember preparing the speech, rehearsing and timing it. I'm not particularly proud of the result, neither 10 years ago nor today, but it brought tears to my eyes re-watching it.
 
-https://www.youtube.com/watch?v=4nRGZjA8aDg
+[![Watch the Video](https://img.youtube.com/vi/4nRGZjA8aDg/sddefault.jpg)](https://www.youtube.com/watch?v=4nRGZjA8aDg)
 
 The careful reader might have recognized a pattern, specially if you don't speak Portuguese, since you can focus more in the body language and sound cues. I'll help you out: my left hand is out of control throughout the video. It tries to find a shelter in my left pocket for a while (funny enough from the same pants I'm wearing right now). Halfway through, my left hand decides to hit my left pocket (which contains my keys) 15 times 'til the end of the video, making a disturbing sound.
 
