@@ -11,7 +11,7 @@ import Credits from "../components/Credits.astro";
 ---
 
 <script>
-  import { stagger, spring, timeline, TimelineDefinition } from "motion";
+  import { stagger, spring, timeline, type TimelineDefinition } from "motion";
   const cards = document.querySelectorAll(".card");
 
   const sequence = [
@@ -44,8 +44,8 @@ import Credits from "../components/Credits.astro";
       colSpan="lg:col-span-1 md:col-span-2"
       rowSpan="md:row-span-2 lg:row-span-3"
     />
-    <ContactsCard colSpan="md:col-span-1" rowSpan="" />
     <Blog />
+    <ContactsCard colSpan="md:col-span-1" rowSpan="" />
     <TimeZone colSpan="lg:col-span-1 md:col-span-2" rowSpan="md:row-span-1" />
     <Now colSpan="md:col-span-1" />
     <Credits />

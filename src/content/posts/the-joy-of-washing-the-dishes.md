@@ -7,6 +7,7 @@ tags:
   - Culture
 category: me
 ---
+
 I started dating my wife 15 years ago. Back then, out of the many things that caught my attention when joining the environment of a new family, there was one that intrigued me for many years: the joy when washing the dishes.
 
 At home, my siblings and I would do **any kind** of business to simply get away of this task. I remember even the impact of thinking about it during a meal that I had to do such a task. I was 14, my sister, 11, and my brother, 9.
