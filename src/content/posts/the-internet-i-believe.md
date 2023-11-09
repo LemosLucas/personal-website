@@ -10,7 +10,7 @@ category: me
 
 The reason I decided to write in this blog and not anywhere else is: ownership. At first, I considered using other platforms so I didn't have to worry about maintaing a site, a domain, a server and all other pieces of infrastructure that are needed. I won't deny, there is indeed a cost in pursuing this path. I don't want to judge you in case you opted to a more convenient solution, but rather show some benefits that might not be that obvious.
 
-I can have nearly full control of the User Experience (usually limited my lack of skills only). What does it mean in practice?
+I can have nearly full control of the User Experience (usually limited by my lack of skills only). What does it mean in practice?
 - I won't collect any of your data
 - I won't auto-play an ad as you scroll my posts
 - I won't insert any banners in the middle of the paragraphs
