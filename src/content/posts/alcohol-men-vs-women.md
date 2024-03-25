@@ -41,4 +41,4 @@ The sample size is reasonable enough for me to mention it here. It's been a doze
 One can only imagine what those women have experienced to have such reaction. To some extent, this creates an immediate bond between us, as if we were in the same team.
 
 
-In the end of the day, this is just a decision like any other. Obviously, it does not make me any better than others. I don't want to romanticize it. My callout is to highlight that, for a certain of groupe of people, it is a very big deal (positively and negatively).
+In the end of the day, this is just a decision like any other. Obviously, it does not make me any better than others. I don't want to romanticize it. My callout is to highlight that, for a certain of group of people, it is a very big deal (positively and negatively).
